@@ -17,7 +17,8 @@ class Vertice:
     def add_adjacentes(self, new_vertice , peso):
         self.adjacentes[new_vertice] = peso
         
-                
+    def get_adjacentes(self):
+        return self.adjacentes         
         
 class Grafo:
     def __init__(self, grafoOrientado):
@@ -34,5 +35,5 @@ class Grafo:
         if not para in self.vertices:
             self.add_vertice(para)
         self.vertices[de].add_adjacentes(para)
-        if not grafoOrientado:
+        if not self.grafoOrientado:
             self.vertices[para].add_adjacentes(de)
