@@ -32,19 +32,26 @@ class Test(unittest.TestCase):
     def tearDown(self):
         pass
 
-
-    def testUpdateList(self):
-        v1 = self.grafo.list_vertices['SP']
-        dv1 = v1.get_adjacentes()
-        for adj in dv1.keys():
-            adj.set_distancia(10)
-        v2 = self.grafo.list_vertices['RJ']
-        dv2 = v2.get_adjacentes()
-        for adj2 in dv2.keys():
-            print (str(adj2.get_distancia()))
+    
+    def testMatrizAdj(self):
+        
+        matriz = self.grafo.get_matriz_adjacencia()
+        print(matriz)
+    
+    def testAddVertice(self):    
+        expected = ['SP', 'RJ', 'ES', 'MG', 'SC']
+        actual = self.grafo.list_vertices.keys()
+        self.assertItemsEqual(expected, actual, str(expected) + ' '+ str(actual))
         pass
-
-
+    
+    def testAdj(self):
+        expected = ['RJ', 'ES', 'SC']
+        adj = self.grafo.list_vertices['SP'].get_adjacentes()
+        actual = [v.get_nome() for v in adj.keys()]
+        self.assertItemsEqual(expected, actual, str(expected) + ' '+ str(actual))        
+        pass
+    
+    
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

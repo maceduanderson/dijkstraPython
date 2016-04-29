@@ -6,40 +6,65 @@ Created on 20 de abr de 2016
 import unittest
 
 from Grafos.GrafosUtil import Grafo
-from Grafos.Dijkstra import djikstraAlg
+from Grafos.Dijkstra import djikstraAlg, menorCaminho
 
 
-class Test_Vertices(unittest.TestCase):
+class Test_Dijkstra(unittest.TestCase):
     
     
     def setUp(self):
-        self.grafo = Grafo()
-        self.grafo.add_vertice('SP')
-        self.grafo.add_vertice('RJ')
-        self.grafo.add_vertice('ES')
-        self.grafo.add_vertice('MG')
-        self.grafo.add_vertice('SC')
-        
-        self.grafo.add_aresta('SP', 'RJ', 100)
-        self.grafo.add_aresta('SP', 'ES', 200)
-        self.grafo.add_aresta('ES', 'MG', 50)
-        self.grafo.add_aresta('MG', 'SC', 156)
-        self.grafo.add_aresta('RJ', 'SC', 10)
-        self.grafo.add_aresta('SP', 'SC', 1000)                      
+
+        print("iniciando Teste Test_Dijkstra")
+                              
         pass
 
 
     def tearDown(self):
+        
+        print('Finalizando Teste Test_Dijkstra')
         pass
 
 
-    def testVertices(self):
-        
-        
-        djikstraAlg(self.grafo, 'RJ')
-        
+    def testDijkstra(self):
+        grafo = Grafo()
+        grafo.add_vertice('SP')
+        grafo.add_vertice('RJ')
+        grafo.add_vertice('ES')
+        grafo.add_vertice('MG')
+        grafo.add_vertice('SC')        
+        grafo.add_aresta('SP', 'RJ', 100)
+        grafo.add_aresta('SP', 'ES', 200)
+        grafo.add_aresta('ES', 'MG', 50)
+        grafo.add_aresta('MG', 'SC', 156)
+        grafo.add_aresta('RJ', 'SC', 10)
+        grafo.add_aresta('SP', 'SC', 1000)           
+                          
+        djikstraAlg(grafo, 'SP')
+        scVertice = grafo.get_vertice('SC')
+        self.assertTrue(scVertice.get_distancia() == 110, 'distance to SC is '+ str(scVertice.get_distancia()))      
+                        
         pass
-
+    
+    def testMinimoCaminho(self):
+        grafo = Grafo()
+        grafo.add_vertice('SP')
+        grafo.add_vertice('RJ')
+        grafo.add_vertice('ES')
+        grafo.add_vertice('MG')
+        grafo.add_vertice('SC')        
+        grafo.add_aresta('SP', 'RJ', 100)
+        grafo.add_aresta('SP', 'ES', 200)
+        grafo.add_aresta('ES', 'MG', 50)
+        grafo.add_aresta('MG', 'SC', 156)
+        grafo.add_aresta('RJ', 'SC', 10)
+        grafo.add_aresta('SP', 'SC', 1000)
+          
+        djikstraAlg(grafo, 'SP')
+        expected =  list([grafo.get_vertice('SP'), grafo.get_vertice('RJ'), grafo.get_vertice('SC')])
+        actual = menorCaminho(grafo.get_vertice('SC'))
+        actual.sort(cmp=None, key=None, reverse=False)
+        self.assertListEqual(expected, actual,  str(expected) + ' '+ str(actual))
+        pass
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
