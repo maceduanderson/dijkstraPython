@@ -8,7 +8,7 @@ import unittest
 from Grafos.GrafosUtil import Grafo
 
 
-class Test(unittest.TestCase):
+class Test_Grafos(unittest.TestCase):
 
 
     def setUp(self):

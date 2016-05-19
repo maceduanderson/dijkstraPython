@@ -5,7 +5,7 @@ Created on 18 de mai de 2016
 '''
 import unittest
 
-from Grafos.GrafosUtil import Vertice
+from Grafos.GrafosUtil import *
 
 
 

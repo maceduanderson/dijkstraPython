@@ -9,7 +9,7 @@ import unittest
 from DataStruct.PriorityQueue import PriorityQueue
 
 
-class Test(unittest.TestCase):
+class Test_Queue(unittest.TestCase):
     
     def setUp(self):
         self.int_list = [ i for i in range(1, 100)]
