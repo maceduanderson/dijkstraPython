@@ -5,6 +5,7 @@ Created on 27 de abr de 2016
 '''
 import heapq
 
+
 class PriorityQueue:
     
     def __init__(self, queue=[]):

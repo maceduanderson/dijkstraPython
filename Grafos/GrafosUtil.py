@@ -6,10 +6,6 @@ Created on 19 de abr de 2016
 import sys
 
 
-
-
-
-
 class Vertice:
     def __init__(self, nome, _id):
         self.id =  _id       
@@ -80,7 +76,7 @@ class Grafo:
     def get_list_vertices(self):
         return self.list_vertices
     
-    def get_matriz_adjacencia(self):        
+    def get_matriz_distancia(self):        
         if self.list_vertices:
             for nome, verticeI in self.list_vertices.items():
                 linha = []
@@ -94,17 +90,7 @@ class Grafo:
                     linha = linha +[inAdj]
                 self.matriz_adjacencia = self.matriz_adjacencia + [linha]
             return self.matriz_adjacencia            
-                            
-                        
-                    
-                    
-                    
-                    
-                     
-                
-                
-                
-                
+                                                            
     
     def __str__(self):
         return '{0}'.format([x.__str__() for x in self.list_vertices.values()])

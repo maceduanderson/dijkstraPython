@@ -5,8 +5,8 @@ Created on 20 de abr de 2016
 '''
 import unittest
 
-from Grafos.GrafosUtil import Grafo
 from Grafos.Dijkstra import djikstraAlg, menorCaminho
+from Grafos.GrafosUtil import Grafo
 
 
 class Test_Dijkstra(unittest.TestCase):

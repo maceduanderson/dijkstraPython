@@ -8,7 +8,6 @@ import unittest
 from Grafos.GrafosUtil import Grafo
 
 
-
 class Test(unittest.TestCase):
 
 
@@ -35,7 +34,7 @@ class Test(unittest.TestCase):
     
     def testMatrizAdj(self):
         
-        matriz = self.grafo.get_matriz_adjacencia()
+        matriz = self.grafo.get_matriz_distancia()
         print(matriz)
     
     def testAddVertice(self):    
